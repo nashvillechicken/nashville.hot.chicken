@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nashville Hot Chicken Duhok - Premium Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .menu-item {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 0.3s ease;
+        }
+        .menu-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+        }
+        .category-btn.active {
+            background: linear-gradient(135deg, #f97316, #dc2626);
+            color: white;
+            transform: scale(1.05);
+        }
+        .floating-cart {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0,-30px,0);
+            }
+            70% {
+                transform: translate3d(0,-15px,0);
+            }
+            90% {
+                transform: translate3d(0,-4px,0);
+            }
+        }
+        .bounce {
+            animation: bounce 1s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-red-600 via-orange-600 to-yellow-500 text-white shadow-2xl">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex items-center justify-center">
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold tracking-tight">Nashville Hot Chicken Duhok</h1>
+                    <p class="text-orange-100 text-lg">Premium Hot Chicken & More</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Filter -->
+    <div class="container mx-auto px-6 py-8">
+        <div class="flex flex-wrap gap-4 justify-center mb-12">
+            <button class="category-btn active px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg transition-all duration-300 bg-white text-gray-700 hover:shadow-xl" data-category="all">
+                🍽️ All Items
+            </button>
+            <button class="category-btn px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg transition-all duration-300 bg-white text-gray-700 hover:shadow-xl" data-category="chicken">
+                🍗 Hot Chicken
+            </button>
+            <button class="category-btn px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg transition-all duration-300 bg-white text-gray-700 hover:shadow-xl" data-category="burgers">
+                🍔 Burgers
+            </button>
+            <button class="category-btn px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg transition-all duration-300 bg-white text-gray-700 hover:shadow-xl" data-category="combos">
+                🍽️ Combos
+            </button>
+            <button class="category-btn px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg transition-all duration-300 bg-white text-gray-700 hover:shadow-xl" data-category="sides">
+                🍟 Sides
+            </button>
+            <button class="category-btn px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg transition-all duration-300 bg-white text-gray-700 hover:shadow-xl" data-category="drinks">
+                🥤 Drinks
+            </button>
+            <button class="category-btn px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg transition-all duration-300 bg-white text-gray-700 hover:shadow-xl" data-category="sauces">
+                🌶️ Sauces
+            </button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="menuGrid">
+            <!-- Wings -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="chicken">
+                <div class="relative h-48 bg-gradient-to-br from-red-400 via-orange-500 to-yellow-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/2cj2te85m0msezs2jn452/1-19.jpg?rlkey=z57hksyrzr2l6ag1asruascmv&st=fm7fd11n&dl=1" alt="Wings" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full font-bold flex items-center space-x-1">
+                        <span>🔥</span>
+                        <span>HOT</span>
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Wings</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">6000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">8 fresh wings with Nashville mix sauce, pickles & 2 toasts.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🌶️ Spicy</span>
+                            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full font-medium">⭐ Popular</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tenders -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="chicken">
+                <div class="relative h-48 bg-gradient-to-br from-orange-400 via-red-500 to-pink-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/jaqpzvbx3et01t93rxn92/1-17.jpg?rlkey=5agkj55e9dz1uxwaklodn3r4m&st=udlcqrf6&dl=1" alt="Tenders" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        CRISPY
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Tenders</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">6500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">4 fresh tenders with Nashville mix sauce, pickles & 2 toasts.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🔥 Crispy</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">👨‍🍳 Hand-breaded</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sando -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="chicken">
+                <div class="relative h-48 bg-gradient-to-br from-green-400 via-orange-500 to-red-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/yy9j1mzpom9nu58jk80e2/1-14.jpg?rlkey=c50p2lb2otyoqinhlyg8mlbt2&st=2sh2jdll&dl=1" alt="Sando" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        SIGNATURE
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Sando</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">6500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">A large piece of chicken breast with Nashville mix sauce, pickles, coleslaw & cheese.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🥒 Pickles</span>
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🍞 Brioche Bun</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tenders Combo -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="combos">
+                <div class="relative h-48 bg-gradient-to-br from-orange-400 via-red-500 to-pink-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/j4sz00j7b5gjqmdq45u61/1-16.jpg?rlkey=sz5yfjwsn2n3j52h9waoqy5fq&st=ehwkvthd&dl=1" alt="Tenders Combo" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-orange-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COMBO
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Tenders Combo</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">8500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">4 fresh chicken tenders with pickles & 2 toasts. Served with fries, 2 dips, a cup of Coleslaw, and a cup of Pepsi.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🔥 Crispy</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🥤 Includes Drink</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wings Combo -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="combos">
+                <div class="relative h-48 bg-gradient-to-br from-red-400 via-orange-500 to-yellow-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/2cj2te85m0msezs2jn452/1-19.jpg?rlkey=z57hksyrzr2l6ag1asruascmv&st=fm7fd11n&dl=1" alt="Wings" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COMBO
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Wings Combo</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">8500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">8 fresh wings with pickles & 2 toasts. Served with fries, 2 dips, a cup of Coleslaw, and a cup of Pepsi.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🌶️ Spicy</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🥤 Includes Drink</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sando Combo -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="combos">
+                <div class="relative h-48 bg-gradient-to-br from-green-400 via-orange-500 to-red-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/6bim4izhwjai125by6i28/1-13.jpg?rlkey=llrwvang6za7kaz9kjyam3d11&st=oup8y7mb&dl=1" alt="Sando Combo" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COMBO
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Sando Combo</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">8500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">A large piece of chicken sandwich with Nashville mix sauce, pickles, coleslaw & cheese. Served with fries, 2 dips, a cup of Coleslaw, and a cup of Pepsi.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🥒 Pickles</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🥤 Includes Drink</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mix Combo -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="combos">
+                <div class="relative h-48 bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/wb1pgiqqoo3ilvdkgg1bw/1-8.jpg?rlkey=yw8b9jmhf184ylqjpe9ptqzh4&st=0nnxijhv&dl=1" alt="Mix Combo" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COMBO
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Mix Combo</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">9000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">1 drumstick, 1 thigh, 1 wing & 1 tender and 2 toasts. Served with fries, 2 dips, a cup of Coleslaw, and a cup of Pepsi.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full font-medium">🍗 Wings & Tenders</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🥤 Includes Drink</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All American Combo -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="combos">
+                <div class="relative h-48 bg-gradient-to-br from-blue-400 via-red-500 to-white flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/raej6pj4tlnnnlc512ce5/1-1.jpg?rlkey=9gesomsge9s0mrkdfk2nqwfnq&st=ace96w5i&dl=1" alt="All American Combo" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COMBO
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">All American Combo</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">10000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Double fresh beef patties with cheese, onions, pickles, ketchup & mustard, served with fries and a cup of Pepsi.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🇺🇸 Classic</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🥤 Includes Drink</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oklahoma Combo -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="combos">
+                <div class="relative h-48 bg-gradient-to-br from-orange-400 via-red-500 to-yellow-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/cautdv7krii844il58c1e/1-10.jpg?rlkey=6jnt9uzw3wd9z1wvli0w460r1&st=57cxowr5&dl=1" alt="Oklahoma Combo" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-orange-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COMBO
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Oklahoma Combo</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">10000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Double fresh beef patties with cheese, onions, pickles & smash sauce, served with fries and a cup of Pepsi.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full font-medium">🧅 Onions</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🥤 Includes Drink</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jalapeno Monster Combo -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="combos">
+                <div class="relative h-48 bg-gradient-to-br from-green-400 via-red-500 to-orange-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/vs08gbwzmtwryt1m29g77/1-5.jpg?rlkey=z3hfwqr7u1eadzeinc2snlnj0&st=tbwq3rjl&dl=1" alt="Jalapeno Monster Combo" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COMBO
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Jalapeno Monster Combo</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">10000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Double fresh beef patties with cheese, jalapeno & smash sauce, served with fries and a cup of Pepsi.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🌶️ Jalapeños</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🥤 Includes Drink</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mix -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="chicken">
+                <div class="relative h-48 bg-gradient-to-br from-purple-400 via-orange-500 to-red-500 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/lbrlcwk4e0spafzb590b3/1-9.jpg?rlkey=appb7rft6z56ckbs1jje5ram8&st=1qb15ie8&dl=1" alt="Mix" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        MIX
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Mix</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">7000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">1 drumstick, 1 thigh, 1 wing & 1 tender with Nashville mix sauce & 2 toasts.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full font-medium">🍗 Variety</span>
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🔥 Nashville</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Twisters -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="chicken">
+                <div class="relative h-48 bg-gradient-to-br from-green-400 via-yellow-400 to-orange-500 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/1606vy8uun7guker7reuc/1-15.jpg?rlkey=ws2hubrxl2pxwr3d4s151g6kg&st=hwt24skq&dl=1" alt="Twister" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-green-600 text-white text-white text-xs px-3 py-1 rounded-full font-bold">
+                        WRAP
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Twisters</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">5000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Crispy tenders in a tortilla with Nashville mix sauce, coleslaw, pickles & cheese.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🌯 Wrap</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🥬 Fresh Veggies</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kids Meal -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="chicken">
+                <div class="relative h-48 bg-gradient-to-br from-pink-300 via-blue-400 to-yellow-400 flex items-center justify-center">
+                    <svg width="120" height="80" viewBox="0 0 120 80" class="drop-shadow-2xl">
+                        <!-- Tender pieces -->
+                        <rect x="15" y="35" width="20" height="6" rx="3" fill="#DEB887" stroke="#8B4513" stroke-width="1"/>
+                        <rect x="20" y="42" width="15" height="5" rx="2" fill="#CD853F" stroke="#8B4513" stroke-width="1"/>
+                        <!-- Mac & cheese cup -->
+                        <ellipse cx="55" cy="50" rx="15" ry="8" fill="#FFD700"/>
+                        <ellipse cx="55" cy="47" rx="13" ry="6" fill="#FFA500"/>
+                        <!-- Fries -->
+                        <rect x="75" y="40" width="2" height="12" fill="#FFD700"/>
+                        <rect x="78" y="38" width="2" height="14" fill="#FFD700"/>
+                        <rect x="81" y="41" width="2" height="11" fill="#FFD700"/>
+                        <rect x="84" y="39" width="2" height="13" fill="#FFD700"/>
+                        <!-- Juice box -->
+                        <rect x="95" y="35" width="12" height="15" rx="2" fill="#FF69B4"/>
+                        <rect x="97" y="37" width="8" height="11" fill="#FFB6C1"/>
+                        <rect x="101" y="32" width="2" height="5" fill="#C0C0C0"/>
+                    </svg>
+                    <div class="absolute top-4 left-4 bg-pink-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        KIDS
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Kids Meal</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">3500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Chopped Chicken Tender, a Cup of Coleslaw, served with Fries and Juice.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-pink-100 text-pink-600 text-xs px-2 py-1 rounded-full font-medium">👶 Kid-Friendly</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🥬 Coleslaw</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rizo -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="chicken">
+                <div class="relative h-48 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/p5c54k7wrasb076ddbb4q/1-12.jpg?rlkey=ihn1sfvubb6tf16v0oyor964x&st=0bvts5kl&dl=1" alt="Rizo" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-amber-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        RICE BOWL
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Rizo</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">5000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Seasoned rice topped with chopped tenders & Nashville mix sauce.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-amber-100 text-amber-600 text-xs px-2 py-1 rounded-full font-medium">🍚 Rice Bowl</span>
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🔥 Nashville</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chicken Loaded Fries -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="chicken">
+                <div class="relative h-48 bg-gradient-to-br from-yellow-400 via-orange-500 to-red-500 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/fsulripjjbzv5ici5sd57/1-3.jpg?rlkey=jm3o30uo2lzi8iazgvzfuvfp3&st=p0520r00&dl=1" alt="Chicken Loaded Fries" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-yellow-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        LOADED
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Chicken Loaded Fries</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">5500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Crispy fries topped with chopped tenders, Nashville mix sauce, pickles, coleslaw & cheese.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🍟 Loaded</span>
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🔥 Nashville</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- All American Burger -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="burgers">
+                <div class="relative h-48 bg-gradient-to-br from-blue-400 via-red-500 to-white flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/6s7xels90sse7vwy2i2ce/1-2.jpg?rlkey=vphsihv9wub7s5lejgaiqq8kq&st=spuduwi6&dl=1" alt="All American" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        CLASSIC
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">All American</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">8000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Double fresh beef patties with cheese, onions, pickles, ketchup & mustard.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🇺🇸 Classic</span>
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🧀 Cheese</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oklahoma Burger -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="burgers">
+                <div class="relative h-48 bg-gradient-to-br from-orange-400 via-red-500 to-yellow-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/cosq7gi4za3t572zjcmj6/1-11.jpg?rlkey=pk0vpxjpe8ksz2ip1sbbie10k&st=7ikgfbkh&dl=1" alt="Oklahoma" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-orange-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        SMASH
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Oklahoma</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">8000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Double fresh beef patties with cheese, onions, pickles & smash sauce.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full font-medium">🧅 Onions</span>
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🔥 Smashed</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jalapeno Monster -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="burgers">
+                <div class="relative h-48 bg-gradient-to-br from-green-400 via-red-500 to-orange-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/w9t1aesnmptrkmh0m4svu/1-6.jpg?rlkey=1vyqo4qps1o6qy7a9ez73vuxl&st=l2hxjopn&dl=1" alt="Jalapeno Monster" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-green-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        🌶️ SPICY
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Jalapeno Monster</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">8000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Double fresh beef patties with cheese, jalapeno & smash sauce.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🌶️ Jalapeños</span>
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🧀 Pepper Jack</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meat Loaded Fries -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="burgers">
+                <div class="relative h-48 bg-gradient-to-br from-red-400 via-yellow-500 to-orange-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/579q6tg26n512rwmczhkl/1-7.jpg?rlkey=onfm7ifaoagyitw8zn3of8bk5&st=63pg40qu&dl=1" alt="Meat Loaded Fries" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-red-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        LOADED
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Meat Loaded Fries</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">6500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Crispy fries topped with double fresh beef patties, cheese & smash sauce.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🥩 Beef</span>
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🧀 Cheese</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fries (Sides) -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="sides">
+                <div class="relative h-48 bg-gradient-to-br from-yellow-300 via-orange-400 to-red-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/hy0r372idhmkdgvrrk6xp/fries.jpg?rlkey=cie7j974g2jin208ljfgqyko7&st=699weirs&dl=1" alt="Fries" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-yellow-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        CRISPY
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Fries</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">2000</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Crispy golden french fries</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🔥 Crispy</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full font-medium">🧂 Salted</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coleslaw -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="sides">
+                <div class="relative h-48 bg-gradient-to-br from-green-200 via-white to-yellow-200 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/k9l3g4jpa3b9du3jym8jd/coleslaw.jpg?rlkey=09tnzyugdv4qp3a53s6mytk5y&st=brgex81k&dl=1" alt="Coleslaw" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        FRESH
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Coleslaw</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">1500</div>
+                            <div class="text-xs text-gray-500">per order</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Fresh cabbage and carrot slaw with creamy dressing</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🥬 Fresh</span>
+                            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full font-medium">🥕 Crunchy</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Can -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="drinks">
+                <div class="relative h-48 bg-gradient-to-br from-red-400 via-blue-500 to-silver flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/rze0eferdbi2sexjhrgro/images.jpg?rlkey=n1evuj513x545rzjx4djfxpij&st=9ojwshnz&dl=1" alt="Soft Drinks" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-red-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COLD
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Can</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">500</div>
+                            <div class="text-xs text-gray-500">per can</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Pepsi, Mirinda, 7up and Diet Pepsi</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">🥤 Cold</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full font-medium">🎯 Classic</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fresh -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="drinks">
+                <div class="relative h-48 bg-gradient-to-br from-orange-300 via-yellow-400 to-green-300 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/rze0eferdbi2sexjhrgro/images.jpg?rlkey=n1evuj513x545rzjx4djfxpij&st=9ojwshnz&dl=1" alt="Fresh Drinks" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        FRESH
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Fresh</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">1000</div>
+                            <div class="text-xs text-gray-500">per bottle</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Pepsi, Mirinda, 7up and Diet Pepsi</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full font-medium">🍊 Natural</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">💪 Healthy</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Water -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="drinks">
+                <div class="relative h-48 bg-gradient-to-br from-blue-200 via-cyan-300 to-blue-400 flex items-center justify-center overflow-hidden">
+                    <img src="https://www.dropbox.com/scl/fi/d4z1qb6b5a7355mlzey5t/W3.jpg?rlkey=i3fmywo6jrk7a81mkw3drao0b&st=suaql61z&dl=1" alt="Water Bottle" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        PURE
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Water</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">250</div>
+                            <div class="text-xs text-gray-500">per bottle</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Pure bottled water</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">💧 Pure</span>
+                            <span class="bg-cyan-100 text-cyan-600 text-xs px-2 py-1 rounded-full font-medium">❄️ Cold</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ranch -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="sauces">
+                <div class="relative h-48 bg-gradient-to-br from-green-200 via-white to-green-100 flex items-center justify-center">
+                    <svg width="80" height="70" viewBox="0 0 80 70" class="drop-shadow-2xl">
+                        <ellipse cx="40" cy="50" rx="30" ry="15" fill="#8B4513"/>
+                        <ellipse cx="40" cy="47" rx="28" ry="12" fill="#F5F5DC"/>
+                        <ellipse cx="40" cy="35" rx="25" ry="10" fill="#FFFFFF"/>
+                        <circle cx="35" cy="32" r="2" fill="#90EE90"/>
+                        <circle cx="45" cy="34" r="2" fill="#90EE90"/>
+                        <circle cx="40" cy="30" r="2" fill="#90EE90"/>
+                    </svg>
+                    <div class="absolute top-4 left-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        CLASSIC
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Ranch</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">500</div>
+                            <div class="text-xs text-gray-500">per cup</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Classic creamy ranch dressing</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🥛 Creamy</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full font-medium">🌿 Herbed</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nashville Mix -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="sauces">
+                <div class="relative h-48 bg-gradient-to-br from-red-400 via-orange-500 to-yellow-400 flex items-center justify-center">
+                    <svg width="80" height="70" viewBox="0 0 80 70" class="drop-shadow-2xl">
+                        <ellipse cx="40" cy="50" rx="30" ry="15" fill="#8B4513"/>
+                        <ellipse cx="40" cy="47" rx="28" ry="12" fill="#F5F5DC"/>
+                        <ellipse cx="40" cy="35" rx="25" ry="10" fill="#FF4500"/>
+                        <circle cx="35" cy="32" r="2" fill="#8B0000"/>
+                        <circle cx="45" cy="34" r="2" fill="#8B0000"/>
+                        <circle cx="40" cy="30" r="2" fill="#8B0000"/>
+                    </svg>
+                    <div class="absolute top-4 left-4 bg-red-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        🔥 HOT
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Nashville Mix</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">500</div>
+                            <div class="text-xs text-gray-500">per cup</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Signature Nashville hot sauce blend</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🌶️ Spicy</span>
+                            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full font-medium">🔥 Signature</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smash Sauce -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="sauces">
+                <div class="relative h-48 bg-gradient-to-br from-yellow-300 via-orange-400 to-red-400 flex items-center justify-center">
+                    <svg width="80" height="70" viewBox="0 0 80 70" class="drop-shadow-2xl">
+                        <ellipse cx="40" cy="50" rx="30" ry="15" fill="#8B4513"/>
+                        <ellipse cx="40" cy="47" rx="28" ry="12" fill="#F5F5DC"/>
+                        <ellipse cx="40" cy="35" rx="25" ry="10" fill="#FFD700"/>
+                        <circle cx="35" cy="32" r="2" fill="#FF6347"/>
+                        <circle cx="45" cy="34" r="2" fill="#FF6347"/>
+                        <circle cx="40" cy="30" r="2" fill="#FF6347"/>
+                    </svg>
+                    <div class="absolute top-4 left-4 bg-orange-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        SMASH
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Smash Sauce</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">500</div>
+                            <div class="text-xs text-gray-500">per cup</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Special sauce for smash burgers</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🍔 Burger</span>
+                            <span class="bg-orange-100 text-orange-600 text-xs px-2 py-1 rounded-full font-medium">⭐ Special</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nashville Comeback -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="sauces">
+                <div class="relative h-48 bg-gradient-to-br from-purple-400 via-red-500 to-orange-400 flex items-center justify-center">
+                    <svg width="80" height="70" viewBox="0 0 80 70" class="drop-shadow-2xl">
+                        <ellipse cx="40" cy="50" rx="30" ry="15" fill="#8B4513"/>
+                        <ellipse cx="40" cy="47" rx="28" ry="12" fill="#F5F5DC"/>
+                        <ellipse cx="40" cy="35" rx="25" ry="10" fill="#8B008B"/>
+                        <circle cx="35" cy="32" r="2" fill="#FFD700"/>
+                        <circle cx="45" cy="34" r="2" fill="#FFD700"/>
+                        <circle cx="40" cy="30" r="2" fill="#FFD700"/>
+                    </svg>
+                    <div class="absolute top-4 left-4 bg-purple-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        COMEBACK
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-red-500 text-lg">❤️</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Nashville Comeback</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">500</div>
+                            <div class="text-xs text-gray-500">per cup</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Nashville-style comeback sauce with a kick</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full font-medium">🌶️ Tangy</span>
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full font-medium">🎯 Nashville</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honey Mustard -->
+            <div class="menu-item card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-category="sauces">
+                <div class="relative h-48 bg-gradient-to-br from-yellow-200 via-amber-300 to-orange-300 flex items-center justify-center">
+                    <svg width="80" height="70" viewBox="0 0 80 70" class="drop-shadow-2xl">
+                        <ellipse cx="40" cy="50" rx="30" ry="15" fill="#8B4513"/>
+                        <ellipse cx="40" cy="47" rx="28" ry="12" fill="#F5F5DC"/>
+                        <ellipse cx="40" cy="35" rx="25" ry="10" fill="#FFB347"/>
+                        <circle cx="35" cy="32" r="2" fill="#8B4513"/>
+                        <circle cx="45" cy="34" r="2" fill="#8B4513"/>
+                        <circle cx="40" cy="30" r="2" fill="#8B4513"/>
+                    </svg>
+                    <div class="absolute top-4 left-4 bg-yellow-600 text-white text-xs px-3 py-1 rounded-full font-bold">
+                        🍯 SWEET
+                    </div>
+                    <button class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-lg">
+                        <span class="text-gray-400 text-lg">🤍</span>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-xl font-bold text-gray-800">Honey Mustard</h3>
+                        <div class="text-right">
+                            <div class="text-2xl font-bold text-orange-500">500</div>
+                            <div class="text-xs text-gray-500">per cup</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4 leading-relaxed">Sweet and tangy honey mustard sauce</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-medium">🍯 Sweet</span>
+                            <span class="bg-amber-100 text-amber-600 text-xs px-2 py-1 rounded-full font-medium">🌟 Classic</span>
+                        </div>
+                        <button class="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button -->
+    <div class="floating-cart">
+        <button id="cartButton" class="bg-gradient-to-r from-orange-500 to-red-500 text-white w-16 h-16 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all duration-300 relative">
+            🛒
+            <span id="cartCount" class="absolute -top-2 -right-2 bg-yellow-400 text-red-600 text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center hidden">0</span>
+        </button>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-3xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden shadow-2xl">
+            <!-- Cart Header -->
+            <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold">Your Order</h2>
+                    <button id="closeCart" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                        ✕
+                    </button>
+                </div>
+            </div>
+
+            <div class="overflow-y-auto max-h-[calc(90vh-200px)]">
+                <!-- Cart Items -->
+                <div id="cartItems" class="p-6">
+                    <div class="text-center text-gray-500 py-8">
+                        <div class="text-6xl mb-4">🛒</div>
+                        <p class="text-lg">Your cart is empty</p>
+                        <p class="text-sm">Add some delicious items to get started!</p>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div id="orderSummary" class="border-t border-gray-200 p-6 bg-gray-50 hidden">
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-lg text-gray-800">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">0 IQD</span>
+                        </div>
+                        <div class="flex justify-between text-lg text-gray-600">
+                            <span>Delivery Fee:</span>
+                            <span class="text-orange-600 font-medium">To be calculated</span>
+                        </div>
+                        <div class="border-t border-gray-300 pt-3">
+                            <div class="flex justify-between text-xl font-bold text-gray-800">
+                                <span>Total:</span>
+                                <span id="total">0 IQD + Delivery</span>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-4">
+                            <div class="flex items-start space-x-2">
+                                <span class="text-blue-500 text-lg">ℹ️</span>
+                                <div class="text-sm text-blue-700">
+                                    <p class="font-medium mb-1">Delivery Information:</p>
+                                    <p>We will call you to confirm your order and calculate the delivery fee based on your location.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Details Form -->
+                <div id="customerForm" class="border-t border-gray-200 p-6 hidden">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Delivery Details</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="customerName" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Enter your full name" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                            <input type="tel" id="customerPhone" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="07XX XXX XXXX" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Delivery Address *</label>
+                            <textarea id="customerAddress" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Enter your complete address including area, street, and landmarks" required></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Special Instructions (Optional)</label>
+                            <textarea id="specialInstructions" rows="2" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Any special requests or notes for your order"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Footer -->
+            <div class="border-t border-gray-200 p-6 bg-white">
+                <button id="checkoutButton" class="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed hidden">
+                    Place Order via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cart state
+        let cart = [];
+        const WHATSAPP_NUMBER = '+9647510770020'; // Replace with your WhatsApp number
+
+        // Category filtering functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+
+                menuItems.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Cart functionality
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const orderSummary = document.getElementById('orderSummary');
+            const customerForm = document.getElementById('customerForm');
+            const checkoutButton = document.getElementById('checkoutButton');
+
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (totalItems > 0) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            } else {
+                cartCount.classList.add('hidden');
+            }
+
+            // Update cart items display
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="text-center text-gray-500 py-8">
+                        <div class="text-6xl mb-4">🛒</div>
+                        <p class="text-lg">Your cart is empty</p>
+                        <p class="text-sm">Add some delicious items to get started!</p>
+                    </div>
+                `;
+                orderSummary.classList.add('hidden');
+                customerForm.classList.add('hidden');
+                checkoutButton.classList.add('hidden');
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-gray-800">${item.name}</h4>
+                            ${item.heatLevel ? `<p class="text-sm text-orange-600">Heat: ${item.heatLevel}</p>` : ''}
+                            <p class="text-sm text-gray-600">${item.price} IQD each</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-all">
+                                −
+                            </button>
+                            <span class="font-semibold text-lg w-8 text-center">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-all">
+                                +
+                            </button>
+                        </div>
+                        <div class="ml-4">
+                            <p class="font-semibold text-gray-800">${item.price * item.quantity} IQD</p>
+                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 text-sm hover:text-red-700 transition-all">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Calculate totals
+                const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+                document.getElementById('subtotal').textContent = `${subtotal} IQD`;
+                document.getElementById('total').textContent = `${subtotal} IQD + Delivery`;
+
+                orderSummary.classList.remove('hidden');
+                customerForm.classList.remove('hidden');
+                checkoutButton.classList.remove('hidden');
+            }
+        }
+
+        function addToCart(itemData) {
+            const existingItem = cart.find(item => 
+                item.name === itemData.name && 
+                item.heatLevel === itemData.heatLevel
+            );
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: Date.now().toString(),
+                    ...itemData,
+                    quantity: 1
+                });
+            }
+
+            updateCartUI();
+        }
+
+        function updateQuantity(itemId, change) {
+            const item = cart.find(item => item.id === itemId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(itemId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartUI();
+        }
+
+        // Cart modal functionality
+        document.getElementById('cartButton').addEventListener('click', () => {
+            document.getElementById('cartModal').classList.remove('hidden');
+        });
+
+        document.getElementById('closeCart').addEventListener('click', () => {
+            document.getElementById('cartModal').classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('cartModal').addEventListener('click', (e) => {
+            if (e.target.id === 'cartModal') {
+                document.getElementById('cartModal').classList.add('hidden');
+            }
+        });
+
+        // Heat level selection modal
+        function createHeatLevelModal(itemName, addButton) {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Choose Heat Level</h3>
+                        <p class="text-gray-600">Select your preferred spice level for ${itemName}</p>
+                    </div>
+                    
+                    <div class="space-y-3 mb-6">
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-orange-300 transition-all">
+                            <input type="radio" name="heatLevel" value="original" class="w-5 h-5 text-orange-500 mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-gray-800">Original</span>
+                                    <span class="text-2xl">😋</span>
+                                </div>
+                                <p class="text-sm text-gray-600">No heat, just flavor</p>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-orange-300 transition-all">
+                            <input type="radio" name="heatLevel" value="mild" class="w-5 h-5 text-orange-500 mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-gray-800">Mild</span>
+                                    <span class="text-2xl">🌶️</span>
+                                </div>
+                                <p class="text-sm text-gray-600">Light kick of heat</p>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-orange-300 transition-all">
+                            <input type="radio" name="heatLevel" value="medium" class="w-5 h-5 text-orange-500 mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-gray-800">Medium</span>
+                                    <span class="text-2xl">🔥</span>
+                                </div>
+                                <p class="text-sm text-gray-600">Noticeable heat</p>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-orange-300 transition-all">
+                            <input type="radio" name="heatLevel" value="flamin" class="w-5 h-5 text-orange-500 mr-4">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-semibold text-gray-800">Flamin' Hot</span>
+                                    <span class="text-2xl">🔥🔥</span>
+                                </div>
+                                <p class="text-sm text-gray-600">Maximum heat level!</p>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button class="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-all" onclick="closeHeatModal()">
+                            Cancel
+                        </button>
+                        <button class="flex-1 px-6 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all" onclick="confirmHeatLevel('${addButton.dataset.itemId}')">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add click listener to radio buttons for visual feedback
+            modal.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    modal.querySelectorAll('label').forEach(label => {
+                        label.classList.remove('border-orange-500', 'bg-orange-50');
+                        label.classList.add('border-gray-200');
+                    });
+                    radio.closest('label').classList.remove('border-gray-200');
+                    radio.closest('label').classList.add('border-orange-500', 'bg-orange-50');
+                });
+            });
+            
+            return modal;
+        }
+
+        function closeHeatModal() {
+            const modal = document.querySelector('.fixed.inset-0:not(#cartModal)');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        function confirmHeatLevel(itemId) {
+            const modal = document.querySelector('.fixed.inset-0:not(#cartModal)');
+            const selectedHeat = modal.querySelector('input[name="heatLevel"]:checked');
+            
+            if (!selectedHeat) {
+                alert('Please select a heat level');
+                return;
+            }
+            
+            const addButton = document.querySelector(`[data-item-id="${itemId}"]`);
+            const menuItem = addButton.closest('.menu-item');
+            const itemName = menuItem.querySelector('h3').textContent;
+            const itemPrice = parseInt(menuItem.querySelector('.text-2xl.font-bold.text-orange-500').textContent);
+            
+            // Add to cart
+            addToCart({
+                name: itemName,
+                price: itemPrice,
+                heatLevel: selectedHeat.value
+            });
+            
+            const cartButton = document.querySelector('#cartButton');
+            
+            // Add bounce animation to cart
+            cartButton.classList.add('bounce');
+            
+            // Remove animation class after animation completes
+            setTimeout(() => {
+                cartButton.classList.remove('bounce');
+            }, 1000);
+
+            // Show success feedback
+            const originalText = addButton.textContent;
+            addButton.textContent = 'Added!';
+            addButton.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            
+            setTimeout(() => {
+                addButton.textContent = originalText;
+                addButton.style.background = 'linear-gradient(135deg, #f97316, #dc2626)';
+            }, 1500);
+            
+            closeHeatModal();
+        }
+
+        // Checkout functionality
+        document.getElementById('checkoutButton').addEventListener('click', () => {
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerAddress = document.getElementById('customerAddress').value.trim();
+            const specialInstructions = document.getElementById('specialInstructions').value.trim();
+
+            // Validate required fields
+            if (!customerName || !customerPhone || !customerAddress) {
+                alert('Please fill in all required fields (Name, Phone, Address)');
+                return;
+            }
+
+            // Validate phone number format (basic validation for Iraqi numbers)
+            const phoneRegex = /^07[0-9]{9}$/;
+            if (!phoneRegex.test(customerPhone.replace(/\s/g, ''))) {
+                alert('Please enter a valid Iraqi phone number (07XX XXX XXXX)');
+                return;
+            }
+
+            // Generate order message
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            let orderMessage = `🍗 *New Order - Nashville Hot Chicken Duhok*\n\n`;
+            orderMessage += `👤 *Customer Details:*\n`;
+            orderMessage += `Name: ${customerName}\n`;
+            orderMessage += `Phone: ${customerPhone}\n`;
+            orderMessage += `Address: ${customerAddress}\n\n`;
+            
+            orderMessage += `🛒 *Order Items:*\n`;
+            cart.forEach(item => {
+                orderMessage += `• ${item.name}`;
+                if (item.heatLevel) {
+                    orderMessage += ` (${item.heatLevel})`;
+                }
+                orderMessage += ` x${item.quantity} - ${item.price * item.quantity} IQD\n`;
+            });
+            
+            orderMessage += `\n💰 *Subtotal: ${subtotal} IQD*\n`;
+            orderMessage += `🚚 *Delivery Fee: To be calculated based on location*\n\n`;
+            
+            if (specialInstructions) {
+                orderMessage += `📝 *Special Instructions:*\n${specialInstructions}\n\n`;
+            }
+            
+            orderMessage += `⏰ Order placed at: ${new Date().toLocaleString('en-US', {
+                timeZone: 'Asia/Baghdad',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            })}`;
+
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderMessage)}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message and clear cart
+            alert('Order sent to WhatsApp! We will contact you shortly to confirm your order.');
+            
+            // Clear cart and close modal
+            cart = [];
+            updateCartUI();
+            document.getElementById('cartModal').classList.add('hidden');
+            
+            // Clear form
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerAddress').value = '';
+            document.getElementById('specialInstructions').value = '';
+        });
+
+        // Check if item contains chicken
+        function isChickenItem(menuItem) {
+            const category = menuItem.getAttribute('data-category');
+            const itemName = menuItem.querySelector('h3').textContent;
+            
+            // Chicken category items always need heat selection
+            if (category === 'chicken') {
+                return true;
+            }
+            
+            // For combos, only chicken-based combos need heat selection
+            if (category === 'combos') {
+                const nonChickenCombos = ['All American Combo', 'Oklahoma Combo', 'Jalapeno Monster Combo'];
+                return !nonChickenCombos.includes(itemName);
+            }
+            
+            return false;
+        }
+
+        // Add to cart functionality with heat level selection
+        const addButtons = document.querySelectorAll('.menu-item button:last-child');
+        const cartButton = document.querySelector('.floating-cart button');
+
+        addButtons.forEach((button, index) => {
+            button.dataset.itemId = `item-${index}`;
+            
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const menuItem = button.closest('.menu-item');
+                const itemName = menuItem.querySelector('h3').textContent;
+                
+                // Check if this is a chicken item
+                if (isChickenItem(menuItem)) {
+                    // Show heat level selection modal
+                    const modal = createHeatLevelModal(itemName, button);
+                    document.body.appendChild(modal);
+                } else {
+                    // Non-chicken items go straight to cart
+                    const menuItem = button.closest('.menu-item');
+                    const itemName = menuItem.querySelector('h3').textContent;
+                    const itemPrice = parseInt(menuItem.querySelector('.text-2xl.font-bold.text-orange-500').textContent);
+                    
+                    // Add to cart
+                    addToCart({
+                        name: itemName,
+                        price: itemPrice,
+                        heatLevel: null
+                    });
+                    
+                    const cartButton = document.querySelector('#cartButton');
+                    cartButton.classList.add('bounce');
+                    
+                    setTimeout(() => {
+                        cartButton.classList.remove('bounce');
+                    }, 1000);
+
+                    const originalText = button.textContent;
+                    button.textContent = 'Added!';
+                    button.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.background = 'linear-gradient(135deg, #f97316, #dc2626)';
+                    }, 1500);
+                }
+            });
+        });
+
+        // Heart/favorite functionality
+        const heartButtons = document.querySelectorAll('.menu-item .absolute.top-4.right-4');
+        
+        heartButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const heart = button.querySelector('span');
+                
+                if (heart.textContent === '🤍') {
+                    heart.textContent = '❤️';
+                    heart.classList.remove('text-gray-400');
+                    heart.classList.add('text-red-500');
+                } else {
+                    heart.textContent = '🤍';
+                    heart.classList.remove('text-red-500');
+                    heart.classList.add('text-gray-400');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'966cd6cad42c35f4',t:'MTc1Mzc5NDQ0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
